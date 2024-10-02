@@ -43,9 +43,11 @@ class CounterComponent extends Component {
           {this.state.counter}
         </div>
         <div style={{
+            display:'flex',
+            flexDirection:'row',
             alignItems:"center",
-            justifyContent:"space-around",
-            margin:"10px",
+            justifyContent:"center",
+            gap:"10px"
         }}>
           <button onClick={this.artir} style={{
             fontSize: 50,

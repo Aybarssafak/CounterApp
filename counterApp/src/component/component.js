@@ -1,76 +1,48 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 
-class CounterComponent extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      counter: props.initialCounter || 0 // Default olarak 0 başlar, prop olarak değer alabilir.
-    };
-  }
+const Counter = ({ step }) => {
+  const [count, setCount] = useState(0);
 
-  artir = () => {
-    this.setState({
-      counter: this.state.counter + 1
-    });
-  }
+  const handleIncrement = () => {
+    setCount(count + step);
+  };
 
-  azalt = () => {
-    this.setState({
-      counter: this.state.counter - 1
-    });
-  }
+  const handleDecrement = () => {
+    setCount(count - step);
+  };
 
-  sifirla = () => {
-    this.setState({
-      counter: 0
-    });
-  }
-
-  render() {
-    return (
+  return (
+    <div style={{
+      display:'flex',
+      flexDirection:'column',
+      justifyContent:'center',
+      alignItems:'center'
+    }}>
+      <h2>Counter: {count}</h2>
       <div style={{
-        alignItems:"center",
-        justifyContent:"center",
-      }}>            
-        <div className="counter" style={{
-            display: "flex",
-            flexDirection: "column",
-            fontSize: 50,
-            alignItems: "center",
-            justifyContent: "center"
-          }}>
-          <h1 style={{ fontSize: 40 }}>Counter App</h1>
-          {this.state.counter}
-        </div>
-        <div style={{
-            display:'flex',
-            flexDirection:'row',
-            alignItems:"center",
-            justifyContent:"center",
-            gap:"10px"
-        }}>
-          <button onClick={this.artir} style={{
-            fontSize: 50,
-            background: "black",
-            color: "white",
-            borderRadius: 50
-          }}>+</button>
-          <button onClick={this.sifirla} style={{
-            fontSize: 50,
-            background: "black",
-            color: "white",
-            borderRadius: 50
-          }}>0</button>
-          <button onClick={this.azalt} style={{
-            fontSize: 50,
-            background: "black",
-            color: "white",
-            borderRadius: 50
-          }}>-</button>
-        </div>
+        display:'flex',
+        flexDirection:'row',
+        gap:'20px'
+      }}>
+        <button style={{
+          backgroundColor:'black',
+          color:'white',
+          borderRadius:'50px',
+          width:'50px',
+          height:'50px',
+          fontSize:'30px'
+        }} onClick={handleIncrement}>+</button>
+        <button style={{
+          backgroundColor:'black',
+          color:'white',
+          borderRadius:'50px',
+          width:'50px',
+          height:'50px',
+          fontSize:'30px'
+        }} onClick={handleDecrement}>-</button>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
-export default CounterComponent;
+export default Counter;
